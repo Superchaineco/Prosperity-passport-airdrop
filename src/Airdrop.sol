@@ -10,6 +10,9 @@ import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 import "forge-std/console.sol";
 
+// @author Anotherdev
+// @author Modified from Thirdweb
+
 contract Airdrop is EIP712, Ownable {
     /*///////////////////////////////////////////////////////////////
                             State, constants & structs

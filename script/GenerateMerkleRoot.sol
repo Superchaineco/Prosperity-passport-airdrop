@@ -23,7 +23,6 @@ import {ScriptHelper} from "murky/script/common/ScriptHelper.sol";
 
 contract MakeMerkle is Script, ScriptHelper {
     using stdJson for string;
-
     Merkle private m = new Merkle();
 
     string private inputPath = "/script/target/input.json";
@@ -77,11 +76,12 @@ contract MakeMerkle is Script, ScriptHelper {
     /// @dev Read the input file and generate the Merkle proof, then write the output file
     function run() public {
         console.log("Generating Merkle Proof for %s", inputPath);
-
+        vm.pauseGasMetering();
         for (uint256 i = 0; i < count; ++i) {
             string[] memory input = new string[](types.length); // stringified data (address and string both as strings)
             bytes32[] memory data = new bytes32[](types.length); // actual data as a bytes32
 
+            console.log("Entry %s", i);
             for (uint256 j = 0; j < types.length; ++j) {
                 if (compareStrings(types[j], "address")) {
                     address value = elements.readAddress(
