@@ -1,2 +1,5 @@
 @openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/
 murky=lib/murky
+@contracts-bedrock/=lib/optimism/packages/contracts-bedrock/src/
+@solady/=lib/optimism/packages/contracts-bedrock/lib/solady/src/
+@solady-v0.0.245/=lib/optimism/packages/contracts-bedrock/lib/solady-v0.0.245/src/
