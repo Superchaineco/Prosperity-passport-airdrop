@@ -219,7 +219,7 @@ def main():
     # Construir el Merkle tree
 
     # Generar las pruebas y la salida final
-    output = []
+    output = {}
     print("Precargando niveles del Merkle Tree...")
     tree = precalculate_tree(leaves)
     root = get_root(leaves)
@@ -234,7 +234,7 @@ def main():
             "root": root,
             "leaf": leaf,
         }
-        output.append(entry)
+        output[f'{inputs_list[i][0]}'] = entry
 
     # Guardar el resultado en un archivo JSON
     with open("output.json", "w") as f:
