@@ -7,7 +7,7 @@ import {MockToken} from "../src/mocks/MockToken.sol";
 contract DeployAirdrop is Script {
     bytes32 private _merkleRoot =
         0x91673d887a585a027b96f72ced7bdc3c67fd0725fbd74fe1c8e1cba3b6419681;
-    uint256 private _amount = 25 * 4 * 1e18;
+    uint256 private _amount = 2500000 * 4 * 1e18;
 
     function deployAirdrop() public returns (Airdrop, MockToken) {
         vm.startBroadcast();
