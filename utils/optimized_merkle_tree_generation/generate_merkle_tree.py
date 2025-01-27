@@ -209,12 +209,15 @@ def main():
     # 1. Generar las hojas (leaves)
     leaves = []
     inputs_list = []
+    reasons_list = []  # Lista para almacenar las razones
     for i in tqdm(range(input_data["count"]), desc="Generando hojas", unit="hoja"):
         address = input_data["values"][str(i)]["0"]
         amount = int(input_data["values"][str(i)]["1"])
+        reasons = input_data["values"][str(i)].get("reasons", [])  # Obtener razones
         leaf = double_hash_leaf(address, amount)
         leaves.append(leaf)
         inputs_list.append([address, str(amount)])
+        reasons_list.append(reasons)  # Almacenar razones
 
     # Construir el Merkle tree
 
@@ -233,6 +236,7 @@ def main():
             "proof": proof,
             "root": root,
             "leaf": leaf,
+            "reasons": reasons_list[i]  # Incluir razones en la salida
         }
         output[f'{inputs_list[i][0]}'] = entry
 
