@@ -12,6 +12,8 @@ fs_permissions = [
 
 [rpc_endpoints]
 optimism = "https://mainnet.optimism.io"
+celo = "https://forno.celo.org"
 
 [etherscan]
 optimism = { key = "UGB21JYI7XRY68M6IBNNYHPJYTSX2V5ATX" }
+celo = { key = "I36FHHV8SEQP38FSSMQUCI92BJK4H5PJSE" }
