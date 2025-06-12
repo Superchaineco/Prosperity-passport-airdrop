@@ -171,7 +171,7 @@ def get_proof_from_tree(tree: list, node: int) -> list:
     """
     Genera la prueba de Merkle para un nodo dado,
     usando los niveles precalculados en `tree`.
-    
+
     tree[nivel] es la lista de hashes en ese nivel.
     """
     proof_size = log2ceil_bit_magic(len(tree[0]))  # basamos en la cantidad de hojas
@@ -202,8 +202,9 @@ def get_proof_from_tree(tree: list, node: int) -> list:
 
 
 def main():
-    # Leer datos de input.json
-    with open("input.json", "r") as f:
+    # Leer datos de allowlist.json
+    allowlist_path = "../../utils/generate_allowlist/allowlist.json"
+    with open(allowlist_path, "r") as f:
         input_data = json.load(f)
 
     # 1. Generar las hojas (leaves)
@@ -236,9 +237,9 @@ def main():
             "proof": proof,
             "root": root,
             "leaf": leaf,
-            "reasons": reasons_list[i]  # Incluir razones en la salida
+            "reasons": reasons_list[i],  # Incluir razones en la salida
         }
-        output[f'{inputs_list[i][0]}'] = entry
+        output[f"{inputs_list[i][0]}"] = entry
 
     # Guardar el resultado en un archivo JSON
     with open("output.json", "w") as f:
