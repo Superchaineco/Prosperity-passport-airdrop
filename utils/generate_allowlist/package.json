@@ -1,15 +1,16 @@
 {
-  "name": "generate_allowlist",
+  "name": "generate-allowlist",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "Script para generar allowlist de Prosperity Passport",
+  "main": "src/getData.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "get-data": "node src/getData.js",
+    "generate-allowlist": "node index.js"
   },
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "dependencies": {
-    "csv-parser": "^3.1.0"
+    "axios": "^1.6.7",
+    "csv-parser": "^3.0.0",
+    "csv-writer": "^1.6.0"
   }
 }

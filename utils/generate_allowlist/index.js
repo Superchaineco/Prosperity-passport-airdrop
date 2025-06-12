@@ -2,47 +2,35 @@ import fs from 'fs';
 import path from 'path';
 import csv from 'csv-parser';
 
-const flagStrategies = {
-  level: {
-    getTokens: (value) => {
-      const tokensByLevel = {
-        1: '10000000000000000000',
-        2: '20000000000000000000',
-        3: '30000000000000000000',
-        4: '40000000000000000000',
-        5: '50000000000000000000',
-        6: '60000000000000000000',
-      };
-      return tokensByLevel[value] || '0';
-    },
-    getReason: (value) => `Reached level ${value}`,
-  },
-  // Fácil de añadir nuevos flags, por ejemplo:
-  // staking: {
-  //   getTokens: (value) => ...,
-  //   getReason: (value) => ...
-  // }
-};
+const TOKEN_AMOUNT = BigInt('1000000000000000000'); // 1 * 10^18
 
 /**
  * Genera el objeto con la información de cada fila.
  * @param {Object} row - Fila parseada del CSV.
  */
 function createEntry(row) {
-  const address = row.superaccount;
+  const address = row['Super Account'];
+  const level = parseInt(row.Level, 10) || 0;
+  const badges = JSON.parse(row.Badges || '[]');
 
   let totalTokens = BigInt(0);
   const reasons = [];
 
-  Object.entries(flagStrategies).forEach(([flagName, strategy]) => {
-    if (row[flagName]) {
-      const value = parseInt(row[flagName], 10) || 0;
-      if (value > 0) {
-        totalTokens += BigInt(strategy.getTokens(value));
-        reasons.push(strategy.getReason(value));
-      }
-    }
-  });
+  // Tokens por nivel
+  if (level > 0) {
+    totalTokens += TOKEN_AMOUNT * BigInt(level);
+    reasons.push(`Reached level ${level}`);
+  }
+
+  // Tokens por Self Verification badge
+  const hasSelfVerification = badges.some(
+    (badge) => badge.badgeId === '0x11' && badge.name === 'Self Verification'
+  );
+
+  if (hasSelfVerification) {
+    totalTokens += TOKEN_AMOUNT;
+    reasons.push('Claimed Self verification badge');
+  }
 
   return {
     address,
@@ -63,7 +51,7 @@ function createEntry(row) {
  * }
  */
 function generateAllowlist() {
-  const csvPath = './input.csv';
+  const csvPath = './output.csv';
   const outputPath = './allowlist.json';
   const entries = [];
 
