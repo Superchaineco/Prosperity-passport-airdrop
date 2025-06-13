@@ -1,0 +1,62 @@
+{
+  "transactions": [
+    {
+      "hash": "0xcfcfbf82b808e057099a0f9347f4691cc3f5bb9854aa9a7b375e7c84a3c0611a",
+      "transactionType": "CALL",
+      "contractName": "Airdrop",
+      "contractAddress": "0xcc86f7903f52eeb20c512d26c829e1545d577c47",
+      "function": "setMerkleRoot(address,bytes32,bool)",
+      "arguments": [
+        "0x471EcE3750Da237f93B8E339c536989b8978a438",
+        "0x3546c721dfc9bf02a2f10b38c64b7ba6c6d3217afaba535e3ecbb59d0e0c8612",
+        "true"
+      ],
+      "transaction": {
+        "from": "0x1726cf86da996bc4b2f393e713f6f8ef83f2e4f6",
+        "to": "0xcc86f7903f52eeb20c512d26c829e1545d577c47",
+        "gas": "0x18f21",
+        "value": "0x0",
+        "input": "0x8259a87b000000000000000000000000471ece3750da237f93b8e339c536989b8978a4383546c721dfc9bf02a2f10b38c64b7ba6c6d3217afaba535e3ecbb59d0e0c86120000000000000000000000000000000000000000000000000000000000000001",
+        "nonce": "0x84",
+        "chainId": "0xa4ec"
+      },
+      "additionalContracts": [],
+      "isFixedGasLimit": false
+    }
+  ],
+  "receipts": [
+    {
+      "status": "0x1",
+      "cumulativeGasUsed": "0x307aef",
+      "logs": [],
+      "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "type": "0x2",
+      "transactionHash": "0xcfcfbf82b808e057099a0f9347f4691cc3f5bb9854aa9a7b375e7c84a3c0611a",
+      "transactionIndex": "0x14",
+      "blockHash": "0xa5a366fb43945452811e12abc091230deaf376a16e439a8aa73295cc5dc311b0",
+      "blockNumber": "0x2420579",
+      "gasUsed": "0x110e9",
+      "effectiveGasPrice": "0x5e05f0fe2",
+      "from": "0x1726cf86da996bc4b2f393e713f6f8ef83f2e4f6",
+      "to": "0xcc86f7903f52eeb20c512d26c829e1545d577c47",
+      "contractAddress": null,
+      "l1BaseFeeScalar": "0x0",
+      "l1BlobBaseFee": "0x1",
+      "l1BlobBaseFeeScalar": "0x0",
+      "l1Fee": "0x0",
+      "l1GasPrice": "0x119ca8051",
+      "l1GasUsed": "0x72a"
+    }
+  ],
+  "libraries": [],
+  "pending": [],
+  "returns": {
+    "0": {
+      "internal_type": "contract Airdrop",
+      "value": "0xcc86F7903f52EEb20c512D26C829e1545D577c47"
+    }
+  },
+  "timestamp": 1749781967667,
+  "chain": 42220,
+  "commit": "b13ac06"
+}
