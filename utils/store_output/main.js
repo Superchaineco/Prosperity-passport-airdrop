@@ -7,7 +7,9 @@ const client = createClient({
   url: process.env.REDIS_URL,
 });
 
-client.on('error', (err) => console.error('Error when connecting to the client', err));
+client.on('error', (err) =>
+  console.error('Error when connecting to the client', err)
+);
 
 async function main() {
   try {
@@ -18,6 +20,9 @@ async function main() {
       'utf8'
     );
     const parsedData = JSON.parse(jsonData);
+
+    // Eliminar la key existente
+    await client.del('airdrop-allowlist');
 
     const response = await client.json.set(
       'airdrop-allowlist',
